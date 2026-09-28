@@ -1,0 +1,22 @@
+[
+ {
+  "name": "categorie",
+  "kind": "choice",
+  "instructions": "Catégorie principale du courriel, du point de vue de la personne qui le reçoit.",
+  "options": [
+   "Support technique",
+   "Facturation et paiement",
+   "Commande et livraison",
+   "Réclamation",
+   "Demande commerciale",
+   "Réunion et agenda",
+   "Ressources humaines",
+   "Juridique et contrats",
+   "Suivi de projet",
+   "Newsletter et marketing",
+   "Notification automatique",
+   "Personnel",
+   "Spam et hameçonnage"
+  ]
+ }
+]

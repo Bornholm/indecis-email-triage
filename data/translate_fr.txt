@@ -1,0 +1,1 @@
+Translate the email into natural, idiomatic French, as a French-speaking employee would have written it. Keep people's names, company names, numbers, dates, amounts and e-mail addresses unchanged. Keep the subject line, greetings and signature, translated.

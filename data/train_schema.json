@@ -1,0 +1,110 @@
+[
+ {
+  "name": "action",
+  "kind": "choice",
+  "instructions": "What does the recipient need to do with this email?",
+  "options": [
+   "Reply needed",
+   "Approval requested",
+   "Task assigned",
+   "Scheduling",
+   "FYI only"
+  ]
+ },
+ {
+  "name": "domaine",
+  "kind": "choice",
+  "instructions": "À quel domaine d'activité le courriel se rattache-t-il ?",
+  "options": [
+   "Marchés et négoce",
+   "Régulation",
+   "Finance et comptabilité",
+   "Informatique",
+   "Ressources humaines",
+   "Communication interne",
+   "Relations clients",
+   "Vie privée"
+  ]
+ },
+ {
+  "name": "relation",
+  "kind": "choice",
+  "instructions": "Who is the sender relative to the recipient?",
+  "options": [
+   "Colleague",
+   "Manager or executive",
+   "External partner",
+   "Customer",
+   "Vendor or supplier",
+   "Automated system",
+   "Friend or family"
+  ]
+ },
+ {
+  "name": "genre",
+  "kind": "choice",
+  "instructions": "What kind of message is it?",
+  "options": [
+   "Question",
+   "Announcement",
+   "Report or data",
+   "Request for help",
+   "Social invitation",
+   "Thanks or congratulations",
+   "Complaint",
+   "Newsletter or digest"
+  ]
+ },
+ {
+  "name": "sujet",
+  "kind": "choice",
+  "instructions": "Quel est le sujet principal ?",
+  "options": [
+   "Contrats",
+   "Réunions",
+   "Déplacements",
+   "Budget",
+   "Recrutement",
+   "Sport et loisirs",
+   "Politique et actualité",
+   "Technologie",
+   "Gaz et électricité"
+  ]
+ },
+ {
+  "name": "urgence",
+  "kind": "choice",
+  "instructions": "Quelle urgence pour le destinataire ?",
+  "options": [
+   "Urgent",
+   "Cette semaine",
+   "Sans échéance"
+  ]
+ },
+ {
+  "name": "tone",
+  "kind": "choice",
+  "instructions": "What is the tone of the email?",
+  "options": [
+   "Friendly",
+   "Neutral and factual",
+   "Formal",
+   "Frustrated or negative",
+   "Humorous"
+  ]
+ },
+ {
+  "name": "archive",
+  "kind": "choice",
+  "instructions": "Dans quel dossier ranger ce courriel ?",
+  "options": [
+   "Clients",
+   "Fournisseurs",
+   "Interne",
+   "Administratif",
+   "Personnel",
+   "Lettres d'information",
+   "À supprimer"
+  ]
+ }
+]
