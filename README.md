@@ -36,4 +36,4 @@ The request format, examples in criteria and the server options are described in
 
 ## License
 
-GPL-3.0, like indecis. The support tickets used for training are under CC-BY-NC-4.0: a model trained on them is fit for experiments only.
+GPL-3.0. The support tickets used for training are under CC-BY-NC-4.0: a model trained on them is fit for experiments only.
