@@ -11,7 +11,7 @@ make model-a25m    # a25m: build/model-a25m, three times slower
 make eval          # backbone, fine-tuned model, and 5 examples per category
 ```
 
-The program is built against the sibling repository `../indecis`.
+The programs depend on indecis v0.2.0 (see `go.mod`).
 
 | Target | Backbone | Training data | Steps |
 | --- | --- | --- | --- |
