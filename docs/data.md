@@ -22,10 +22,10 @@ LLM answers cannot be reproduced exactly, so they are versioned:
 | `enron_train.jsonl` | 1,934 | Enron training emails, labeled along eight other category lists |
 | `enron_train_fr.jsonl` | 850 | French translations of part of them |
 
-The inputs given to the teachers are next to them: `classic_schema.json` and `classic_guidelines.md` (test list), `train_schema.json` and `train_guidelines.md` (training lists, written by `go run . teacher-schema`), `translate_fr.txt` (translation instructions).
+The inputs given to the teachers are next to them: `classic_schema.json` and `classic_guidelines.md` (test list), `train_schema.json` and `train_guidelines.md` (training lists, written by `go run ./experiments teacher-schema`), `translate_fr.txt` (translation instructions).
 
 The teachers are the same as for indecis (Claude and Pi, through `indecis-teach` from the indecis `teacher` module). Only the emails where they agree are kept.
 
-## Templates (`templates/`)
+## Templates (`experiments/templates/`)
 
 20 French email scenarios (invoices, meetings, leave, outages, formal notices…), with greetings and sign-offs in three registers, rendered by `indecis synth`. Their labels follow five axes (department, intent, sender, deadline, register), whose category lists are in `taxonomies.go`.

@@ -1,4 +1,8 @@
-# Email classification among categories given at call time, built with indecis.
+# Email sorting with indecis: the indecis-mail tool, and the experiments
+# behind its model.
+#
+#   make mail        builds bin/indecis-mail
+#   make test        tests the tool (an in-memory IMAP server)
 #
 #   make data        versioned LLM labels + public datasets downloaded
 #   make model       a8m, tickets + Enron + French translations + templates
@@ -18,15 +22,20 @@ BACKBONE_A25M ?= $(MODELS)/bekko-embedding-v1-a25m
 BUILD ?= build
 DATA := $(BUILD)/data
 MODEL ?= $(BUILD)/model
-RUN := go run .
+RUN := go run ./experiments
 
-.PHONY: build test backbone data model model-a25m eval serve clean
 
-build:
-	go build -o bin/email-triage .
+.PHONY: mail build test backbone data model model-a25m eval serve clean
+
+mail:
+	CGO_ENABLED=0 go build -o bin/indecis-mail ./cmd/indecis-mail
+
+build: mail
+	go build -o bin/email-triage ./experiments
 
 test:
 	go vet ./...
+	go test ./...
 
 # Backbones: bekko-embedding-v1 a8m (210 MB) and a25m (MIT).
 backbone: $(BACKBONE)/model.safetensors

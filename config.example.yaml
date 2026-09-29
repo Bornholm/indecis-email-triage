@@ -1,0 +1,74 @@
+# indecis-mail configuration. ${VAR} is replaced by an environment
+# variable; ${VAR:-default} gives a default, ${VAR:?message} stops with the
+# message when VAR is missing. Keep passwords out of this file. In the
+# compact {key: value} form, quote a value that holds ${...}.
+
+imap:
+  address: ${IMAP_ADDRESS:-imap.example.org:993}
+  security: tls              # tls (port 993), starttls (port 143) or none
+  username: ${IMAP_USER:?set IMAP_USER}
+  password: ${IMAP_PASSWORD:?set IMAP_PASSWORD}
+
+# An indecis model: bekko-embedding-v1-a8m as downloaded (make backbone), or
+# the model fine-tuned on emails (make model, build/model).
+model: ${INDECIS_MAIL_MODEL:-~/.cache/indecis/models/bekko-embedding-v1-a8m}
+
+mailboxes: [INBOX]
+
+select:
+  unseen: true               # only unread messages
+  since: 14d                 # 14d, 36h or a date such as 2026-09-01
+  limit: 200                 # most recent first
+
+action:
+  mode: keyword              # keyword: tag in place; copy or move: to a folder
+  keyword_prefix: triage/    # keyword = prefix + category keyword
+  folder: Triage/{category}  # for copy and move
+  threshold: 0.5             # below this confidence, the message is left as is
+
+# The examples matter most: a few real emails per category, as different
+# from one another as possible. The keyword is derived from the name
+# ("Réunion et agenda" gives triage/reunion-et-agenda) unless set.
+categories:
+  - name: Support technique
+    description: Panne, bug, problème d'accès ou demande d'aide sur un outil ou un service informatique.
+    examples:
+      - "Impossible de me connecter à la messagerie depuis ce matin"
+      - "L'imprimante du deuxième étage est encore en panne"
+  - name: Facturation et paiement
+    description: Factures, paiements, relances, remboursements.
+    examples:
+      - "Votre facture n° 4521 est disponible dans votre espace client"
+      - "Relance : la facture du 12 mars reste impayée"
+  - name: Commande et livraison
+    description: Suivi de commande, expédition, retard de livraison, retour ou échange.
+    examples:
+      - "Votre colis a été expédié, voici le numéro de suivi"
+      - "Ma commande devait arriver lundi, toujours rien"
+  - name: Demande commerciale
+    description: Demande de devis, de tarifs ou d'informations avant achat, prospection.
+    examples:
+      - "Pourriez-vous nous faire parvenir un devis pour 50 licences ?"
+  - name: Réunion et agenda
+    description: Invitation, planification, report ou annulation de réunion, compte rendu.
+    examples:
+      - "Réunion de lancement jeudi à 10 h en salle Mercure"
+      - "Pouvez-vous décaler le point de lundi ?"
+  - name: Ressources humaines
+    description: Recrutement, candidature, congés, paie, formation.
+    examples:
+      - "Je souhaiterais poser mes congés du 4 au 15 août"
+      - "Veuillez trouver ci-joint ma candidature au poste de développeur"
+  - name: Newsletter et marketing
+    description: Lettre d'information, promotion, annonce envoyée à une liste de diffusion.
+    examples:
+      - "Nos offres de la rentrée : jusqu'à -30 % sur toute la gamme"
+  - name: Notification automatique
+    description: Message généré par un système, alerte, confirmation, accusé de réception.
+    examples:
+      - "Votre mot de passe a été modifié"
+      - "Alerte : l'espace disque du serveur dépasse 90 %"
+  - name: Spam et hameçonnage
+    description: Message non sollicité, publicité abusive ou tentative de fraude.
+    examples:
+      - "Votre compte sera suspendu, confirmez vos identifiants sous 24 h"

@@ -2,10 +2,10 @@
 // categories given at inference time, which can change from one call to
 // the next (see indecis.ChooseAmong).
 //
-//	go run . prepare
-//	go run . baseline
-//	go run . train-embed
-//	go run . eval-embed
+//	go run ./experiments prepare
+//	go run ./experiments baseline
+//	go run ./experiments train-embed
+//	go run ./experiments eval-embed
 package main
 
 import (
@@ -40,7 +40,7 @@ func main() {
 	shots := fs.Int("k", 5, "few-shot: examples per category")
 	fs.BoolVar(&mix.fr, "fr", false, "train-embed: add Enron emails translated to French")
 	fs.IntVar(&mix.synth, "synth", 0, "train-embed: synthetic French emails to add")
-	fs.StringVar(&mix.synthDir, "synth-dir", "templates", "train-embed: templates")
+	fs.StringVar(&mix.synthDir, "synth-dir", "experiments/templates", "train-embed: templates")
 	fs.Parse(os.Args[2:])
 	ctx := context.Background()
 	dataDir = *data
