@@ -12,6 +12,8 @@ bin/indecis-mail run -config mail.yaml                # do it
 bin/indecis-mail run -config mail.yaml -watch 5m      # again every 5 minutes
 ```
 
+Releases also carry `indecis-mail` for Linux (amd64, arm64), as an archive or as a `.deb`, `.rpm` or Arch package that installs `/usr/bin/indecis-mail` and the example configuration in `/usr/share/doc/indecis-mail/`. The model fine-tuned on emails is attached to them (`indecis-email-triage-model_<version>.tar.gz`, non-commercial use only: see its `LICENSE.md`); set `model` to the extracted directory.
+
 ## Configuration
 
 `config.example.yaml` documents every field. In short:

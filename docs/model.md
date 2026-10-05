@@ -20,6 +20,18 @@ The programs depend on indecis v0.3.0 (see `go.mod`).
 
 Each Enron email trains along eight category lists (`taxonomies.go`), never the "classic" list of the test. Training is one epoch, batches of 16, learning rate 2e-5, seed 1.
 
+## Publishing
+
+A tag `v*` pushed to GitHub makes the CI publish `indecis-mail` with goreleaser. The model is trained locally, from the tagged commit, and attached to the release afterwards:
+
+```bash
+make data model
+make release-model                   # the latest release
+make release-model MODEL_TAG=v0.1.0  # another one
+```
+
+`release-model` uploads `indecis-email-triage-model_<tag>.tar.gz` and its SHA-256 with `gh`. The archive holds `build/model` and [model-license.md](model-license.md) as `LICENSE.md`: the support tickets make the weights non-commercial.
+
 ## Results
 
 Accuracy with the category name and description only, then with 5 example emails per category:
