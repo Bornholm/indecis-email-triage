@@ -86,7 +86,9 @@ func check(cfg *config.Config) error {
 	sort.Strings(names)
 	fmt.Printf("folders: %s\n", strings.Join(names, ", "))
 	for _, name := range cfg.Mailboxes {
-		sel, err := client.Select(name, &imap.SelectOptions{ReadOnly: true}).Wait()
+		// Read-write: EXAMINE always answers empty PERMANENTFLAGS, which
+		// would say that no keyword is accepted. Nothing is changed.
+		sel, err := client.Select(name, nil).Wait()
 		if err != nil {
 			return fmt.Errorf("%s: %w", name, err)
 		}
