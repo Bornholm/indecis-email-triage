@@ -36,7 +36,8 @@ type IMAP struct {
 	Security string `yaml:"security"` // tls (default), starttls or none
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
-	// InsecureSkipVerify accepts any certificate: for tests only.
+	// InsecureSkipVerify accepts any certificate, invalid ones included:
+	// for a server with a self-signed certificate, or for tests.
 	InsecureSkipVerify bool `yaml:"insecure_skip_verify"`
 }
 

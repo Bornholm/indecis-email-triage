@@ -8,6 +8,7 @@ imap:
   security: tls              # tls (port 993), starttls (port 143) or none
   username: ${IMAP_USER:?set IMAP_USER}
   password: ${IMAP_PASSWORD:?set IMAP_PASSWORD}
+  # insecure_skip_verify: true  # accept any certificate, even invalid: the connection is no longer authenticated
 
 # An indecis model: bekko-embedding-v1-a8m as downloaded (make backbone), or
 # the model fine-tuned on emails (make model, build/model).
