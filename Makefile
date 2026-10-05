@@ -10,7 +10,7 @@
 #   make eval        backbone and fine-tuned model on the test sets
 #   make serve       serves build/model with indecis-serve
 #
-# The programs depend on indecis v0.2.0; make serve builds indecis-serve from
+# The programs depend on indecis v0.3.0; make serve builds indecis-serve from
 # the sibling repository ../indecis. See docs/model.md.
 
 GOEXPERIMENT ?= simd

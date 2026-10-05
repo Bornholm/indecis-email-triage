@@ -3,7 +3,7 @@ module github.com/bornholm/indecis-email-triage
 go 1.27
 
 require (
-	github.com/bornholm/indecis v0.2.0
+	github.com/bornholm/indecis v0.3.0
 	github.com/emersion/go-imap/v2 v2.0.0-beta.8
 	github.com/emersion/go-message v0.18.2
 	gopkg.in/yaml.v3 v3.0.1
