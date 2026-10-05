@@ -11,6 +11,8 @@
 
 The files are fetched through the Hugging Face datasets server. The tickets are never versioned here because of their non-commercial license.
 
+The server limits the request rate: `make data` waits out the limit, and keeps the pages already fetched in `build/data/pages`, so that running it again resumes where it stopped. A Hugging Face token in `HF_TOKEN` raises the limit.
+
 ## Versioned (`data/`)
 
 LLM answers cannot be reproduced exactly, so they are versioned:

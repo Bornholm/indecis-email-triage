@@ -24,7 +24,7 @@ import (
 //     that the teachers classify according to the classic list.
 func prepare(ctx context.Context, dir string, ticketPages, enronPages int) error {
 	var tickets []dataset.Example
-	err := rows(ctx, "Tobi-Bueck/customer-support-tickets", "train", 61765, ticketPages, "poc", func(r map[string]any) {
+	err := rows(ctx, dir, "Tobi-Bueck/customer-support-tickets", "train", 61765, ticketPages, "poc", func(r map[string]any) {
 		text := emailText(str(r, "subject"), str(r, "body"))
 		queue, typ := str(r, "queue"), str(r, "type")
 		if text == "" || queue == "" {
@@ -48,7 +48,7 @@ func prepare(ctx context.Context, dir string, ticketPages, enronPages int) error
 	}
 
 	var imnim []dataset.Example
-	err = rows(ctx, "imnim/multiclass-email-classification", "train", 2105, 0, "", func(r map[string]any) {
+	err = rows(ctx, dir, "imnim/multiclass-email-classification", "train", 2105, 0, "", func(r map[string]any) {
 		var labels []string
 		if ls, ok := r["labels"].([]any); ok {
 			for _, l := range ls {
@@ -71,7 +71,7 @@ func prepare(ctx context.Context, dir string, ticketPages, enronPages int) error
 	}
 
 	var enron []dataset.Example
-	err = rows(ctx, "corbt/enron-emails", "train", 517401, enronPages, "poc", func(r map[string]any) {
+	err = rows(ctx, dir, "corbt/enron-emails", "train", 517401, enronPages, "poc", func(r map[string]any) {
 		body := quoted.Split(str(r, "body"), 2)[0]
 		body = strings.TrimSpace(body)
 		if len(body) < 80 || len(body) > 3000 {
@@ -136,7 +136,7 @@ func moreEnron(ctx context.Context, dir string, pages int, seed string) error {
 		}
 	}
 	var out []dataset.Example
-	err := rows(ctx, "corbt/enron-emails", "train", 517401, pages, seed, func(r map[string]any) {
+	err := rows(ctx, dir, "corbt/enron-emails", "train", 517401, pages, seed, func(r map[string]any) {
 		body := strings.TrimSpace(quoted.Split(str(r, "body"), 2)[0])
 		if len(body) < 80 || len(body) > 3000 {
 			return
@@ -160,7 +160,7 @@ func moreEnron(ctx context.Context, dir string, pages int, seed string) error {
 // sentences that name the theme; the theme is the label to recover.
 func prepareASN(ctx context.Context, dir string, pages, themes int) error {
 	var all []dataset.Example
-	err := rows(ctx, "AdrienB134/ASN_Lettres_De_Suivi", "train", 14408, pages, "poc", func(r map[string]any) {
+	err := rows(ctx, dir, "AdrienB134/ASN_Lettres_De_Suivi", "train", 14408, pages, "poc", func(r map[string]any) {
 		raw := str(r, "raw_file")
 		m := asnTheme.FindStringSubmatch(raw)
 		if m == nil {
