@@ -5,6 +5,9 @@
 //	indecis-mail check    -config mail.yaml   # connection, folders, keywords
 //	indecis-mail classify -config mail.yaml message.eml ...
 //	indecis-mail run      -config mail.yaml [-dry-run] [-watch 5m]
+//
+// A .env file in the current directory, if any, sets the variables that
+// the environment does not.
 package main
 
 import (
@@ -42,6 +45,9 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
+	if err := config.LoadDotEnv(".env"); err != nil {
+		fail(err)
+	}
 	cfg, err := config.Load(*path)
 	if err != nil {
 		fail(err)

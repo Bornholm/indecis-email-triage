@@ -5,7 +5,7 @@
 ```bash
 make mail backbone          # bin/indecis-mail, and bekko-embedding-v1-a8m (210 MB)
 cp config.example.yaml mail.yaml
-export IMAP_USER=me@example.org IMAP_PASSWORD='...'
+printf 'IMAP_USER=me@example.org\nIMAP_PASSWORD=...\n' > .env  # or export them
 bin/indecis-mail check -config mail.yaml              # connection, folders, keywords
 bin/indecis-mail run -config mail.yaml -dry-run       # what would be done
 bin/indecis-mail run -config mail.yaml                # do it
@@ -18,7 +18,7 @@ Releases also carry `indecis-mail` for Linux (amd64, arm64), as an archive or as
 
 `config.example.yaml` documents every field. In short:
 
-- `imap`: address, security (`tls`, `starttls` or `none`), username and password. Values can come from the environment: `${VAR}`, `${VAR:-default}`, `${VAR:?message}` to stop when a variable is missing.
+- `imap`: address, security (`tls`, `starttls` or `none`), username and password. Values can come from the environment: `${VAR}`, `${VAR:-default}`, `${VAR:?message}` to stop when a variable is missing. A `.env` file in the current directory (`KEY=value` per line) sets the variables the environment does not.
 - `model`: the backbone as downloaded, or the model fine-tuned on emails (`make model`, see [docs/model.md](docs/model.md)).
 - `select`: only unread messages, since a date or a duration, at most so many.
 - `action`: `keyword` tags the message in place (`triage/facturation-et-paiement`), `copy` and `move` send it to `Triage/<category>`. Under `threshold`, a message is left as is.

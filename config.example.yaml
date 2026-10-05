@@ -1,6 +1,7 @@
 # indecis-mail configuration. ${VAR} is replaced by an environment
 # variable; ${VAR:-default} gives a default, ${VAR:?message} stops with the
-# message when VAR is missing. Keep passwords out of this file. In the
+# message when VAR is missing. Keep passwords out of this file: put them
+# in the environment or in a .env file in the current directory. In the
 # compact {key: value} form, quote a value that holds ${...}.
 
 imap:
