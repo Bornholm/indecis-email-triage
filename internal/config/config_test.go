@@ -132,3 +132,16 @@ categories: [{name: A}, {name: B}]
 		t.Errorf("threshold %v, limit %d, password %q", c.Action.Threshold, c.Select.Limit, c.IMAP.Password)
 	}
 }
+
+func TestStatePath(t *testing.T) {
+	for in, want := range map[string]string{
+		"mail.yaml":      "mail.state.json",
+		"conf/mail.yml":  "conf/mail.state.json",
+		"mail":           "mail.state.json",
+		"mail.conf.json": "mail.conf.json.state.json",
+	} {
+		if got := statePath(in); got != want {
+			t.Errorf("statePath(%q) = %q; want %q", in, got, want)
+		}
+	}
+}

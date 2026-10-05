@@ -103,7 +103,7 @@ func Load(path string) (*Config, error) {
 		return nil, fmt.Errorf("%s: %w", path, err)
 	}
 	if c.State == "" {
-		c.State = strings.TrimSuffix(path, ".yaml") + ".state.json"
+		c.State = statePath(path)
 	}
 	if err := c.check(); err != nil {
 		return nil, fmt.Errorf("%s: %w", path, err)
@@ -236,6 +236,16 @@ func (c *Config) check() error {
 		}
 	}
 	return nil
+}
+
+// statePath is the default state file: mail.yaml or mail.yml gives
+// mail.state.json, next to it.
+func statePath(config string) string {
+	switch ext := filepath.Ext(config); ext {
+	case ".yaml", ".yml":
+		config = strings.TrimSuffix(config, ext)
+	}
+	return config + ".state.json"
 }
 
 // Keyword is the IMAP keyword of a category.

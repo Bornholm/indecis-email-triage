@@ -3,3 +3,4 @@ build/
 dist/
 mail.yml
 .env
+*.state.json
