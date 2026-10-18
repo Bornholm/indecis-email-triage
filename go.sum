@@ -1,5 +1,5 @@
-github.com/bornholm/indecis v0.3.0 h1:JjjYsDQOs2Rf23f19kfw0dXGjq+JUZom9NdUr+/qHZs=
-github.com/bornholm/indecis v0.3.0/go.mod h1:nNkoX8XEWjrabPBAQQBdwkaZBPcaFSjYQWMD4FMTf/I=
+github.com/bornholm/indecis v0.5.0 h1:DybNqpTWc9j6tOEN7fx5ghitb5tEs3diHGSNkryWttQ=
+github.com/bornholm/indecis v0.5.0/go.mod h1:nNkoX8XEWjrabPBAQQBdwkaZBPcaFSjYQWMD4FMTf/I=
 github.com/emersion/go-imap/v2 v2.0.0-beta.8 h1:5IXZK1E33DyeP526320J3RS7eFlCYGFgtbrfapqDPug=
 github.com/emersion/go-imap/v2 v2.0.0-beta.8/go.mod h1:dhoFe2Q0PwLrMD7oZw8ODuaD0vLYPe5uj2wcOMnvh48=
 github.com/emersion/go-message v0.18.2 h1:rl55SQdjd9oJcIoQNhubD2Acs1E6IzlZISRTK7x/Lpg=

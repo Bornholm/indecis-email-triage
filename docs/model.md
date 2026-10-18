@@ -11,7 +11,7 @@ make model-a25m    # a25m: build/model-a25m, three times slower
 make eval          # backbone, fine-tuned model, and 5 examples per category
 ```
 
-The programs depend on indecis v0.3.0 (see `go.mod`).
+The programs depend on indecis v0.5.0 (see `go.mod`). The results below were measured with v0.3.0; with v0.5.0, the same model scores within 0.6 points of them.
 
 | Target | Backbone | Training data | Steps |
 | --- | --- | --- | --- |

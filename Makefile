@@ -12,7 +12,7 @@
 #   make release-model  attaches build/model to the latest release
 #                       (MODEL_TAG=v1.2.3 for another one)
 #
-# The programs depend on indecis v0.3.0; make serve builds indecis-serve from
+# The programs depend on indecis v0.5.0; make serve builds indecis-serve from
 # the sibling repository ../indecis. See docs/model.md.
 
 GOEXPERIMENT ?= simd
